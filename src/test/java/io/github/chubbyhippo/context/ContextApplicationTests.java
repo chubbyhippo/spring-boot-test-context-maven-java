@@ -9,7 +9,6 @@ import org.springframework.context.ApplicationContext;
 import java.util.Arrays;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.fail;
 
 @SpringBootTest
 class ContextApplicationTests {
@@ -23,6 +22,12 @@ class ContextApplicationTests {
         Arrays.stream(context.getBeanDefinitionNames())
                 .toList()
                 .forEach(System.out::println);
+    }
+
+    @Test
+    @DisplayName("should have security config bean")
+    void shouldHaveSecurityConfigBean() {
+        assertThat(context.getBean("securityConfig")).isNotNull();
     }
 
 }
